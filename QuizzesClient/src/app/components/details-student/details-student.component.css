@@ -1,0 +1,46 @@
+.first {
+  position: absolute;
+  width: 80%;
+  left: 15%;
+  top: 35%
+}
+
+.second {
+  position: absolute;
+  width: 80%;
+  left: 15%;
+  top: 65%
+}
+
+
+.searchText,.form-control {
+  position: absolute;
+  width: 80%;
+  left: 15%;
+  top: 25%
+}
+
+.buttons-container {
+ margin-left: 3%;
+}
+
+h1{
+  text-align: center;
+}
+
+app-header{
+  float: left;
+}
+
+.table-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+.btn-dark{
+  top: 90%;
+  left: 45%;
+  position: absolute;
+}

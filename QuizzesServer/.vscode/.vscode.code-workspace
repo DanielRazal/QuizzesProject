@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../controller"
+		},
+		{
+			"path": "../DAL"
+		},
+		{
+			"path": "../data"
+		},
+		{
+			"path": "../helpers"
+		},
+		{
+			"path": "../node_modules"
+		},
+		{
+			"path": "../routes"
+		},
+		{
+			"path": "../settings"
+		}
+	]
+}

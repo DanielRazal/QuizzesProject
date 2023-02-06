@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="text-center">
+          <h1>Login</h1>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input formControlName="email" class="form-control" type="email" name="email">
+          </div>
+          <div class="mb-3">
+            <label for="fullName" class="form-label">Full Name:</label>
+            <input formControlName="fullName" type="text" class="form-control" name="fullName">
+          </div>
+          <br>
+          <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+          <div>
+            <button type="submit" class="btn btn-primary mb-1">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

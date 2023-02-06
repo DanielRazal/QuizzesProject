@@ -1,0 +1,51 @@
+<div class="navbar navbar-dark bg-primary d-flex align-items-center justify-content-center">
+  <ng-container *ngIf="quiz && quiz.name">
+    <h1>{{ quiz.name }}</h1>
+  </ng-container>
+</div>
+
+<form [formGroup]="addCompletedQuizForm" (ngSubmit)="addCompletedQuiz()">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="card-columns">
+          <div class="card">
+            <div class="card-body">
+            </div>
+            <ng-container *ngIf="quiz && quiz.language.id && quiz.questions">
+              <div [attr.dir]="quiz.language.id === '1' ? 'rtl' : 'ltr'">
+                <h5 class="card-title">{{quiz.questions[currentQuestion].title}}</h5>
+                <div class="card-text">
+                  <div *ngFor="let answer of quiz.questions[currentQuestion].answers" class="form-check">
+                    <input class="form-check-input" [attr.dir]="quiz.language.id === '1' ? 'rtl' : 'ltr'" (change)="updateSelectedQuestions(answer, $event)"
+                    [type]="quiz.questions[currentQuestion].type.id === '1' ? 'radio' : 'checkbox'"
+                    name="{{quiz.questions[currentQuestion].id}}" id="{{answer.id}}" value="{{answer.text}}"
+                    [checked]="selectedAnswersByQuestion[currentQuestion] && selectedAnswersByQuestion[currentQuestion].indexOf(answer) !== -1">
+                    <label class="form-check-label" for="{{answer.id}}">
+                      <span class="color">{{answer.text}}</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-container *ngIf="quiz && quiz.questions">
+      <div class="row">
+        <div class="col-6 text-center">
+        <button type="button" *ngIf="currentQuestion > 0" (click)="prevQuestion()"
+          class="btn btn-secondary prev">Previous</button>
+      </div>
+      <div class="col-6 text-center">
+        <button *ngIf="currentQuestion < quiz.questions.length - 1" (click)="nextQuestion()"
+          class="btn btn-secondary next" type="button">Next</button>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary submit"
+      *ngIf="currentQuestion === quiz.questions.length -1">Submit</button>
+  </ng-container>
+</div>
+</form>

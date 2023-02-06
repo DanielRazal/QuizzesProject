@@ -1,0 +1,54 @@
+<div>
+  <app-header></app-header>
+  <div class="alert alert-primary" role="alert" style="margin: 0 auto; width: 50%;">
+    <h1 style="text-align: center;">{{title}}</h1>
+  </div>
+</div>
+<div class="container-fluid">
+  <input class="form-control me-2" name="search" type="text" placeholder="Search" aria-label="Search"
+    [(ngModel)]="searchText">
+</div>
+
+<div class="center">
+  <table class="table table-dark table-striped w-20">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Link</th>
+        <th>Quiz Name</th>
+        <th>Number Of Questions</th>
+        <th>Last Update</th>
+        <th>Type</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of quizzes | filter:searchText;let i = index">
+        <td><span>{{i + 1}}</span></td>
+        <th><button class="btn btn-light" (click)="handleCopyButton(item.id)">Copy</button></th>
+        <td><span>{{item.name}}</span></td>
+        <td><span>{{item.questions.length}}</span></td>
+        <td><span>{{item.lastUpdate}}</span></td>
+        <td><span>{{item.type.name}}</span></td>
+        <td>
+          <div *ngIf="!item.isActive">
+            <span class="buttons-container">
+              <button (click)="showDetails(item.id)" class="btn btn-primary">Show</button>
+            </span>
+            <span class="buttons-container">
+              <button (click)="nav(item,'editQuiz')" class="btn btn-warning">Edit</button>
+            </span>
+            <span class="buttons-container">
+              <button class="btn btn-secondary" (click)="nav(item,'dupQuiz')">Duplicate</button>
+            </span>
+            <span class="buttons-container">
+              <button (click)="deleteQuiz(item.id)" class="btn btn-danger">Delete</button>
+            </span>
+          </div>
+          <div *ngIf="item.isActive">
+            <h1 class="active">Active</h1>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>

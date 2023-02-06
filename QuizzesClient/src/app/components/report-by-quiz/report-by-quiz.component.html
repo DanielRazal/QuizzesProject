@@ -1,0 +1,39 @@
+<app-header></app-header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="text-center">
+          <h1>Quiz Report</h1>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Type:</label>
+          <select class="form-select" #select (change)="getSelectedQuizId(select.value)">
+            <option value="">Select One</option>
+            <option *ngFor="let c of completedQuizzes" [value]="c.quiz.id">{{c.quiz.name}}</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="any-date" class="form-label">Any Date:</label>
+          <label class="switch">
+            <input type="checkbox" [(ngModel)]="dateRangeChecked" name="any-date" id="any-date">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="form-group" *ngIf="!dateRangeChecked">
+          <label for="fromDate">From:</label>
+          <input type="date" class="form-control" id="fromDate" [(ngModel)]="fromDate">
+        </div>
+        <div class="form-group" *ngIf="!dateRangeChecked">
+          <label for="toDate">To:</label>
+          <input type="date" class="form-control" id="toDate" [(ngModel)]="toDate">
+        </div>
+        <br>
+        <div>
+          <button type="submit" class="btn btn-primary mb-1" (click)="submit()">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

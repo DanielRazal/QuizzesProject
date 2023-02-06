@@ -1,0 +1,47 @@
+h1 {
+  color: white;
+}
+
+h5,
+.text-success,
+.text-danger {
+  font-weight: bolder;
+}
+
+.under-line {
+  text-decoration: underline;
+}
+
+.card {
+  background: lemonchiffon;
+}
+
+.color {
+  color: black;
+}
+
+.next {
+  position: absolute;
+  top: 70%;
+  left: 65%;
+}
+
+.prev {
+  position: absolute;
+  top: 70%;
+  left: 30%;
+}
+
+.submit{
+  position: absolute;
+  top: 70%;
+  left: 47.5%;
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+}
+.form-check-label {
+  margin-right: 40px;
+}

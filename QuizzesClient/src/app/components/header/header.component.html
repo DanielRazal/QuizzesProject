@@ -1,0 +1,31 @@
+<div id="navbar">
+  <a class="home" routerLink="/admin">Home</a>
+  <br>
+  <br>
+  <div class="dropdown">
+    <button class="dropbtn">Questions</button>
+    <div class="dropdown-content">
+      <a routerLink="/addQuestion">Create</a>
+      <a routerLink="/question">Manage</a>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="dropdown">
+    <button class="dropbtn">Quizzes</button>
+    <div class="dropdown-content">
+      <a routerLink="/addQuiz">Create</a>
+      <a routerLink="/quiz">Manage</a>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="dropdown">
+    <button class="dropbtn">Reports</button>
+    <div class="dropdown-content">
+      <a routerLink="/reportByQuiz">By Quiz</a>
+      <a routerLink="/reportByStudent">By Student</a>
+    </div>
+  </div>
+  <a (click)="logout()" class="logout">Logout</a>
+</div>

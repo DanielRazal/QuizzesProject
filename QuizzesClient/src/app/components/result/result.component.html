@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="text-center mb-3">
+          <div class="navbar navbar-dark bg-primary d-flex align-items-center justify-content-center">
+            <h1>{{ completedQuiz.quiz.name }}</h1>
+          </div>
+        </div>
+        <div class="text-center mb-3">
+          <div class="d-flex align-items-center justify-content-center">
+            <h2>{{ completedQuiz.quiz.name }} - Results</h2>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="d-flex">
+            <h5><span class="under-line">Your Grade:</span> {{dataStudent.score}}</h5>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="d-flex">
+            <h5><span class="under-line">Status:</span>
+              <span
+                [ngStyle]="{'color': completedQuiz.score >= completedQuiz.quiz.passingGrade ? 'green' : 'red'}">{{dataStudent.status}}
+              </span>
+            </h5>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="d-flex">
+            <h5><span class="under-line">Summary:</span> You answered questions {{dataStudent.correctAnswers}} of
+              {{completedQuiz.quiz.questions.length}}</h5>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="d-flex">
+            <h5><span class="under-line">Passing Grade:</span> The minimum grade is
+              {{completedQuiz.quiz.passingGrade}}</h5>
+          </div>
+        </div>
+        <div *ngIf="completedQuiz.quiz.showAnswers">
+          <button class="btn btn-info" (click)="nav(completedQuiz)">Review Your Answers</button>
+        </div>
+      </div>
+    </div>
+  </div>

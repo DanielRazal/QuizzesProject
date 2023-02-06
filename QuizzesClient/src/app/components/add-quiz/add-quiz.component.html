@@ -1,0 +1,86 @@
+<app-header></app-header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="text-center">
+          <h1>Add Quiz</h1>
+        </div>
+        <form [formGroup]="addQuizForm" (ngSubmit)="addQuiz()">
+          <div *ngIf="currentPage === 1">
+            <div class="mb-3">
+              <label for="name" class="form-label">Quiz Name:</label>
+              <input formControlName="name" type="text" class="form-control" id="name" placeholder="Enter Quiz Name">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Language:</label>
+              <select class="form-select" formControlName="languageId">
+                <option value="">Select One</option>
+                <option *ngFor="let c of languages" [value]="c.id">
+                  {{c.name}}
+                </option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Quiz Type:</label>
+              <select class="form-select" formControlName="typeId">
+                <option value="">Select One</option>
+                <option *ngFor="let c of quizTypes" [value]="c.id">
+                  {{c.name}}
+                </option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="passingGrade" class="form-label">Passing Grade:</label>
+              <input formControlName="passingGrade" type="number" class="form-control" id="passingGrade"
+                placeholder="Enter Numbers 1- 100">
+            </div>
+            <div class="mb-3">
+              <label for="showAnswers" class="form-label">Show Answers:</label>
+              <label class="switch">
+                <input formControlName="showAnswers" type="checkbox" id="showAnswers">
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+          <div *ngIf="currentPage === 2">
+            <div class="mb-3">
+              <label for="msgOnFailure" class="form-label">Msg On Failure:</label>
+              <input formControlName="msgOnFailure" type="text" class="form-control" id="msgOnFailure">
+            </div>
+            <div class="mb-3">
+              <label for="msgOnSuccess" class="form-label">Msg On Success:</label>
+              <input formControlName="msgOnSuccess" type="text" class="form-control" id="msgOnSuccess">
+            </div>
+          </div>
+          <div *ngIf="currentPage === 3">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th>Question Title</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let question of questions;let i = index">
+                  <td>{{i + 1}}</td>
+                  <td><input type="checkbox" [checked]="isSelected(question)" (change)="updateSelectedQuestions(question, $event)"></td>
+                  <td>{{question.title}}</td>
+                  <td class="text-center"><button type="button" (click)="showDetails(question.id)" class="btn btn-primary">Show</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <br>
+          <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary mb-1 submit" *ngIf="currentPage === 3">Submit</button>
+            <button type="button" class="btn btn-secondary previous" *ngIf="currentPage > 1"
+              (click)="previousPage()">Previous</button>
+            <button type="button" class="btn btn-secondary next" *ngIf="currentPage < totalPages"
+              (click)="nextPage()">Next</button>
+          </div>
+        </form>

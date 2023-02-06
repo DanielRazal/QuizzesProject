@@ -1,0 +1,36 @@
+<app-header></app-header>
+
+<div>
+  <div class="alert alert-primary" role="alert" style="margin: 0 auto; width: 50%;">
+    <h1 style="text-align: center;">{{title}}</h1>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="input-table-container">
+    <input class="form-control me-2" name="search" type="text" placeholder="Search" aria-label="Search"
+      [(ngModel)]="searchText">
+
+    <div class="center">
+      <table class="table table-dark table-striped w-20">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Student</th>
+            <th>Email</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of students | filter:searchText; let i = index">
+            <td><span>{{i + 1}}</span></td>
+            <td><span>{{item.fullName}}</span></td>
+            <td><span>{{item.email}}</span></td>
+            <td><span> <button (click)="nav(item,'detailsStudent')" class="btn btn-primary">Details</button>
+            </span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div>
+  <app-header></app-header>
+  <div class="alert alert-primary" role="alert" style="margin: 0 auto; width: 50%;">
+    <h1 style="text-align: center;">{{title}}</h1>
+  </div>
+</div>
+
+
+<div class="container-fluid">
+  <input class="form-control me-2" name="search" type="text" placeholder="Search" aria-label="Search"
+    [(ngModel)]="searchText">
+</div>
+
+<div class="center">
+  <table class="table table-dark table-striped w-20">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Question</th>
+        <th>Last Update</th>
+        <th>Question Type</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of questions|filter:searchText; let i = index">
+        <td><span>{{i + 1}}</span></td>
+        <td><span>{{item.title}}</span>
+          <br><span>{{item.tags}}</span>
+        </td>
+        <td><span>{{item.lastUpdate}}</span></td>
+        <td>{{item.type.name}}</td>
+        <td>
+          <span class="buttons-container">
+            <button (click)="showDetails(item.id)" class="btn btn-primary">Show</button>
+          </span>
+          <span class="buttons-container">
+            <button (click)="nav(item,'editQuestion')" class="btn btn-warning">Edit</button>
+          </span>
+          <span class="buttons-container">
+            <button class="btn btn-secondary" (click)="nav(item,'dupQuestion')">Duplicate</button>
+          </span>
+          <span class="buttons-container">
+            <button (click)="deleteQuestion(item.id)" class="btn btn-danger">Delete</button>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

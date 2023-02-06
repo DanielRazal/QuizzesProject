@@ -1,0 +1,12 @@
+<div id="header-container">
+  <app-header></app-header>
+  <div class="alert alert-primary" role="alert" style="margin: 0 auto; width: 50%;">
+    <h1 style="text-align: center;">{{title}}</h1>
+    <ng-container *ngIf="admin.company.name">
+      <h2 style="text-align: center;">Company - {{admin.company.name}}</h2>
+    </ng-container>
+    <ng-container *ngIf="admin && admin.field">
+      <h3 style="text-align: center;">Field - {{admin.field.name}}</h3>
+    </ng-container>
+  </div>
+</div>

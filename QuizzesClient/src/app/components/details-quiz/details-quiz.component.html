@@ -1,0 +1,87 @@
+<div>
+  <app-header></app-header>
+  <br><br>
+  <div class="container">
+    <h1>Data Of the Quizzes</h1>
+    <span>Name: <span class="data">{{quiz.name}}</span></span>
+    <span>|</span>
+    <span>Passing Grade: <span class="data">{{quiz.passingGrade}}</span></span>
+    <span>|</span>
+    <span>ID: <span class="data">{{quiz.id}}</span></span>
+    <span>|</span>
+    <span>Questions Number: <span class="data">{{quiz.questions!.length}}</span></span>
+    <div></div>
+    <br>
+    <span>Type: <span class="data">{{quiz.type.name}}</span></span>
+    <span>|</span>
+    <span>Number of Submissions: <span class="data">{{completedQuizzes.length}}</span></span>
+    <span>|</span>
+    <span>Passing Present: <span class="data">{{ passingPercentage | number: '1.0-0' }}%</span></span>
+    <span>|</span>
+    <span>Number Students Passed: <span class="data">{{ passingStudents }}</span></span>
+    <div></div>
+    <br>
+    <span>Average Grade: <span class="data">{{ averageGrade | number: '1.2-2' }}</span></span>
+    <span>|</span>
+    <span>Date Range: <span class="data">{{dateRangeChecked ? 'Any Date' : 'Date Range'}}</span></span>
+  </div>
+
+
+  <div class="pos-1">
+    <table class="table table-dark table-striped w-20">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Student</th>
+          <th>Submitted</th>
+          <th>Score</th>
+          <th>Number Of Answer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of completedQuizzes;let i = index" (click)="showAnsweredQuestions(item)">
+          <td>{{i + 1}}</td>
+          <td>{{item.student.fullName}}</td>
+          <td>{{item.doneDate}}</td>
+          <td>{{item.score}}</td>
+          <td>{{item.selectedAnswers.length}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div *ngIf="selectedQuiz" class="pos-2">
+  <table class="table table-dark table-striped w-20">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Questions</th>
+        <th>Student answers</th>
+        <th>is Correct?</th>
+        <th>Correct Answers</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let answers of selectedQuiz.selectedAnswers;let i = index">
+        <tr *ngFor="let answer of answers">
+          <td>{{i + 1}}</td>
+          <td>{{answer.questionText}}</td>
+          <td>{{answer.text}}</td>
+          <td>
+            <span *ngIf="answer.isCorrect; else incorrect">Correct</span>
+            <ng-template #incorrect>Incorrect</ng-template>
+          </td>
+          <td>
+            <ng-container *ngFor="let question of selectedQuiz.quiz.questions">
+              <ng-container *ngIf="question.title === answer.questionText">
+                <ng-container *ngFor="let correctAnswer of question.answers">
+                  <span *ngIf="correctAnswer.isCorrect">{{ correctAnswer.text }}</span>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </td>
+        </tr>
+      </ng-container>
+  </table>

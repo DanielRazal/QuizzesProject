@@ -1,0 +1,25 @@
+.table {
+  position: absolute;
+  width: 90%;
+  left: 8%;
+  top: 35%
+}
+
+.searchText,.form-control {
+  position: absolute;
+  width: 90%;
+  left: 8%;
+  top: 25%
+}
+
+.buttons-container {
+ margin-left: 3%;
+}
+
+td,th{
+  text-align: center;
+}
+
+app-header{
+  float: left;
+}

@@ -1,0 +1,12 @@
+table{
+  position:absolute;
+  width: 90%;
+  left: 5%;
+  top: 30%;
+}
+
+.btn-dark{
+  top: 70%;
+  left: 45%;
+  position: absolute;
+}

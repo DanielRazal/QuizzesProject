@@ -1,0 +1,70 @@
+<app-header></app-header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="text-center">
+          <h1>Add Question</h1>
+        </div>
+        <form [formGroup]="addQuestionForm" (ngSubmit)="addQuestion()">
+          <div class="form-section" *ngIf="currentPage === 1">
+            <div class="mb-3">
+              <label for="title" class="form-label">Question Name:</label>
+              <input formControlName="title" type="text" class="form-control" id="title"
+              placeholder="Enter Question Name">
+            </div>
+            <div class="mb-3">
+              <label for="textBelow" class="form-label">Text Below:</label>
+              <input formControlName="textBelow" type="text" class="form-control" id="textBelow"
+              placeholder="Enter Text Below">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Question Type:</label>
+              <select class="form-select" formControlName="typeId">
+                <option value="">Select One</option>
+                <option *ngFor="let c of types" [value]="c.id">
+                  {{c.name}}
+                </option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="tags" class="form-label">Tags:</label>
+              <input formControlName="tags" (input)="onInput($event)" type="text" class="form-control" id="tags"
+              placeholder="Seperate the tags with ',' ">
+            </div>
+          </div>
+          <div class="form-section" *ngIf="currentPage === 2">
+            <div formArrayName="answers" *ngFor="let answer of getAnswers(); let i = index">
+              <div [formGroupName]="i">
+                <div class="mb-3">
+                  <label for="text" class="form-label">Answer:</label>
+                  <input formControlName="text" type="text" class="form-control" id="text" placeholder="Enter Answer">
+                </div>
+                <div class="mb-3">
+                  <label for="isCorrect" class="form-label">Is Correct:</label>
+                  <label class="switch">
+                    <input formControlName="isCorrect" type="checkbox" id="isCorrect">
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button (click)="addAnswer()" type="button" class="btn btn-info mx-auto">Add Answer</button>
+            </div>
+          </div>
+          <br>
+          <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+          <div>
+            <button *ngIf="currentPage < totalPages" (click)="nextPage()" type="button"
+            class="btn btn-secondary next">Next</button>
+            <button *ngIf="currentPage > 1" (click)="previousPage()" class="btn btn-secondary previous"
+              type="button">Previous</button>
+            <button type="submit" *ngIf="currentPage > 1" class="btn btn-primary submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

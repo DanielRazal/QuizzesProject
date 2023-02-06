@@ -1,0 +1,18 @@
+.next {
+  position: absolute;
+  right: 10%;
+}
+
+.previous {
+  position: absolute;
+  left: 10%;
+}
+
+.submit {
+  position: absolute;
+  right: 10%;
+}
+
+label[for="isCorrect"] {
+  padding-right: 10px;
+}

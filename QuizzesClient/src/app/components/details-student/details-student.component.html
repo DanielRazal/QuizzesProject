@@ -1,0 +1,69 @@
+<app-header></app-header>
+
+<div class="alert alert-primary" role="alert" style="margin: 0 auto; width: 50%;">
+  <h1 style="text-align: center;">Student {{student.fullName}} with average grade {{average}}</h1>
+</div>
+
+<input class="form-control me-2" name="search" type="text" placeholder="Search" aria-label="Search"
+  [(ngModel)]="searchText">
+
+
+<div class="table-container">
+  <div class="center">
+    <table class="table table-dark table-striped w-20 first">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Quiz Name</th>
+          <th>Grade</th>
+          <th>Last Activity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of completedQuizzes | filter:searchText;let i = index" (click)="showAnsweredQuestions(item)">
+          <td>{{i + 1}}</td>
+          <td>{{item.quiz.name}}</td>
+          <td>{{item.score}}</td>
+          <td>{{item.doneDate}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+  <div class="container" *ngIf="selectedQuiz">
+    <table class="table table-dark table-striped w-20 second">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Questions</th>
+          <th>Student answers</th>
+          <th>is Correct?</th>
+          <th>Correct Answers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let answers of selectedQuiz.selectedAnswers;let i = index">
+          <tr *ngFor="let answer of answers">
+            <td>{{i + 1}}</td>
+            <td>{{answer.questionText}}</td>
+            <td>{{answer.text}}</td>
+            <td>
+              <span *ngIf="answer.isCorrect; else incorrect">Correct</span>
+              <ng-template #incorrect>Incorrect</ng-template>
+            </td>
+            <td>
+              <ng-container *ngFor="let question of selectedQuiz.quiz.questions">
+                <ng-container *ngIf="question.title === answer.questionText">
+                  <ng-container *ngFor="let correctAnswer of question.answers">
+                    <span *ngIf="correctAnswer.isCorrect">{{ correctAnswer.text }}</span>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </td>
+          </tr>
+        </ng-container>
+    </table>
+  </div>
+
+
