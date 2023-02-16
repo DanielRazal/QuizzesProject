@@ -1,13 +1,17 @@
 **Quizzes Project**
 
-**Explanation of the project:**
+**Project Description:**
 
-Developing a Node.js & Angular.
-
-The system will make it possible to define a pool of questions and create exams from it that will be presented to the students,
-the students answers will be saved in the system and it will be possible to see them with the help of appropriate reports.
-The system will support several organizations and each organization will have several fields of study defined,
-each question/examination will be associated with a specific field within a specific organization.
+Developed using **Node.js and Angular**.
+<br>
+The system allows for the creation of question pools and exams that can be presented to students. 
+<br>
+Students' answers are saved in the system, and appropriate reports can be generated to view their answers.
+<br>
+The system supports multiple organizations, with several fields of study defined for each organization.
+<br>
+Each question and examination is associated with a specific field within a particular organization.
+<br>
 
 **How to run the project?**
 
@@ -17,14 +21,17 @@ each question/examination will be associated with a specific field within a spec
 
 2) Open the **QuizzesServer** folder.
 
-3) Open the Terminal **(CTRL + J)**.
+3) Click on Terminal and select New Terminal.
 
-3) Run the project **nodemon app**.
+3) Run the project by typing the command **nodemon app** in the Terminal and pressing Enter.
 
 **Client Side:**
 
 1) Open Visual Studio Code.
 2) Open the **QuizzesClient** folder.
-3) Open the Terminal **(CTRL + J)**.
-4) Run the project **ng serve**.
+3) Click on Terminal and select New Terminal.
+4) Run the project by typing the command **ng serve** in the Terminal and pressing Enter.
 
+**Note:** Make sure you have installed all the required dependencies for both the server and client side of the project before running it.
+<br>
+You can check the project documentation or the package.json file to see the required dependencies and installation instructions.
