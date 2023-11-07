@@ -2,8 +2,7 @@
 
 Developed using **Node.js and Angular**.\
 **"Quizzes"** is a system allows for the creation of question and exams that can be presented to students.\
-Students' answers are saved in the system, and appropriate reports can be generated to view their answers.\
-Each question and examination is associated with a specific field within a particular organization.
+Students' answers are saved in the system, and appropriate reports can be generated to view their answers.
 
 
 **How to run the project?**
