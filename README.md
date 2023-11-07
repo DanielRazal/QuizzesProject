@@ -1,7 +1,7 @@
 # Quizzes
 
 Developed using **Node.js and Angular**.\
-**"Quizzes"** is a system allows for the creation of question pools and exams that can be presented to students.\
+**"Quizzes"** is a system allows for the creation of question and exams that can be presented to students.\
 Students' answers are saved in the system, and appropriate reports can be generated to view their answers.\
 The system supports multiple organizations, with several fields of study defined for each organization.\
 Each question and examination is associated with a specific field within a particular organization.
