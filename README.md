@@ -5,25 +5,16 @@ Developed using **Node.js and Angular**.\
 Students' answers are saved in the system, and appropriate reports can be generated to view their answers.
 
 
-**How to run the project?**
+## Running the Project
 
-**Server Side:**
+To run the **"Quizzes"** project, execute the following commands:
 
-1) Open Visual Studio Code.
+### Server (NodeJs):
 
-2) Open the **QuizzesServer** folder.
+1. Install server dependencies: **npm i**
+2. Start the server using nodemon: **nodemon app**
 
-3) Click on Terminal and select New Terminal.
+### Client (Angular):
 
-3) Run the project by typing the command **nodemon app** in the Terminal and pressing Enter.
-
-**Client Side:**
-
-1) Open Visual Studio Code.
-2) Open the **QuizzesClient** folder.
-3) Click on Terminal and select New Terminal.
-4) Run the project by typing the command **ng serve** in the Terminal and pressing Enter.
-
-**Note:** Make sure you have installed all the required dependencies for both the server and client side of the project before running it.
-<br>
-You can check the project documentation or the package.json file to see the required dependencies and installation instructions.
+1. Install client dependencies: **npm i**
+2. Start the Angular app: **ng serve**
